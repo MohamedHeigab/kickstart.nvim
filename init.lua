@@ -628,6 +628,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
+        eslint = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -719,11 +720,6 @@ require('lazy').setup({
         }
       end,
 
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      astro = { 'prettierd', 'prettier', stop_after_first = true },
-
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
@@ -731,6 +727,11 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        astro = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -1003,6 +1004,8 @@ require('lazy').setup({
 
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 vim.keymap.set('n', '_', '<CMD>lua MiniFiles.open()<CR>', { desc = 'Open parent directory' })
+
+vim.keymap.set('n', '<space>b', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
 
 -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 --   pattern = { '*.html', '*.tsx' },
