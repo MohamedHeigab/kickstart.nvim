@@ -774,6 +774,7 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'Snikimonkd/cmp-go-pkgs',
     },
     config = function()
       -- See `:help cmp`
@@ -788,6 +789,7 @@ require('lazy').setup({
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
+        matching = { disallow_symbol_nonprefix_matching = false }, -- to use . and / in urls
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -850,6 +852,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'go_pkgs' },
         },
       }
     end,
@@ -1005,7 +1008,7 @@ require('lazy').setup({
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 vim.keymap.set('n', '_', '<CMD>lua MiniFiles.open()<CR>', { desc = 'Open parent directory' })
 
-vim.keymap.set('n', '<space>b', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
+vim.keymap.set('n', '<space>bf', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
 
 -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 --   pattern = { '*.html', '*.tsx' },
