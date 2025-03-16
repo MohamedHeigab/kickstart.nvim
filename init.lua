@@ -420,6 +420,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'before')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -650,7 +651,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        tailwindcss = {},
+        tailwindcss = {
+          autostart = false,
+        },
         ts_ls = {},
         --
 
@@ -1050,6 +1053,11 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 vim.keymap.set('n', '_', '<CMD>lua MiniFiles.open()<CR>', { desc = 'Open parent directory' })
 
 vim.keymap.set('n', '<space>bf', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
+
+-- You can provide telescope opts to the picker as show_edits_in_telescope argument:
+vim.keymap.set('n', '<leader>oe', function()
+  before.show_edits_in_telescope(require('telescope.themes').get_dropdown())
+end, {})
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.go',
