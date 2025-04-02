@@ -700,6 +700,7 @@ require('lazy').setup({
           autostart = false,
         },
         ts_ls = {},
+        clangd = {},
         --
 
         lua_ls = {
@@ -788,6 +789,7 @@ require('lazy').setup({
       end,
 
       formatters_by_ft = {
+        c = { 'clang-format' },
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
