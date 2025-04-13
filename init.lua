@@ -846,7 +846,6 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       'Snikimonkd/cmp-go-pkgs',
       'hrsh7th/cmp-nvim-lsp-signature-help',
     },
@@ -926,8 +925,8 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'go_pkgs' },
           { name = 'nvim_lsp_signature_help' },
+          { name = 'go_pkgs' },
         },
       }
     end,
